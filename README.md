@@ -1,4 +1,4 @@
-# EWT360 Helper改
+# EWT360 Helper
 
 ![ima](/image/ewt_image.png)
 
