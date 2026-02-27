@@ -26,6 +26,7 @@
 2. 访问 [Script Installation | Tampermonkey](https://www.tampermonkey.net/script_installation.php#url=https://github.com/ZNink/EWT360-Helper/raw/refs/heads/main/main.user.js)
 3. 在Edge管理插件页面中打开开发人员模式
 4. 至此为止，PC端教程结束，你可以关闭没用的窗口，然后使用浏览器播放网课试试
+5. 课程播放后请不要调整进度条
 
 # 💖使用教程 – 手机端(以Edge作为演示)
 1.	在你的浏览器或手机应用商店中搜索并下载Edge
@@ -45,6 +46,7 @@
 15.	在Edge中登录自己的账号，即可正常看课，至此为止，手机端教程结束
 
 # 😘手机端使用tip:
+- 课程播放后请不要调整进度条
 - 不要使用你自带的手机浏览器或者类似于百度、UC、夸克之类的浏览器.
 - 如果你手机里有via浏览器，可以直接使用via中的脚本功能(不支持更新)
 - 若你想要使用此脚本，请用你启用了脚本的浏览器看升学e网通的视频！请不要用下载的升学e网通app
