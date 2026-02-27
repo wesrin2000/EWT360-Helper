@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         升学E网通助手 改
+// @name         升学E网通助手
 // @namespace    https://github.com/ZNink/EWT360-Helper
 // @version      2.4.1
 // @description  用于帮助学生通过升学E网通更好学习知识(雾)
@@ -131,8 +131,8 @@ const AutoSkip = {
  */
 const AutoPlay = {
     intervalId: null,
-    // 新增：配置播放进度阈值（80%），方便后续调整
-    progressThreshold: 0.8,
+    // 新增：配置播放进度阈值（85%），方便后续调整
+    progressThreshold: 0.85,
 
     toggle(isEnabled) {
         isEnabled ? this.start() : this.stop();
@@ -600,4 +600,5 @@ const GUI = {
         }
     });
 })();
+
 
