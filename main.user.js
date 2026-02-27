@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         升学E网通助手 v2 Lite
+// @name         升学E网通助手 改
 // @namespace    https://github.com/ZNink/EWT360-Helper
-// @version      2.3.1
+// @version      2.4.1
 // @description  用于帮助学生通过升学E网通更好学习知识(雾)
 // @match        https://teacher.ewt360.com/ewtbend/bend/index/index.html*
 // @match        http://teacher.ewt360.com/ewtbend/bend/index/index.html*
 // @match        https://web.ewt360.com/site-study/*
 // @match        http://web.ewt360.com/site-study/*
-// @author       ZNink，Linrzh
+// @author       ZNink，Linrzh，L#peace
 // @icon         https://www.ewt360.com/favicon.ico
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/ZNink/EWT360-Helper/main/main.user.js
@@ -131,6 +131,8 @@ const AutoSkip = {
  */
 const AutoPlay = {
     intervalId: null,
+    // 新增：配置播放进度阈值（80%），方便后续调整
+    progressThreshold: 0.8,
 
     toggle(isEnabled) {
         isEnabled ? this.start() : this.stop();
@@ -156,21 +158,53 @@ const AutoPlay = {
     checkAndSwitch() {
         try {
             DebugLogger.debug('AutoPlay', '检查是否需要切换视频');
-            const progressImage = document.querySelector('img.progress-img-vkUYM[src="//file.ewt360.com/file/1820894120067424424"]');
-            if (!progressImage) return;
 
+            // 判断播放进度是否达到80%
+            //找到视频元素
+            const videoElement = document.querySelector('video'); // 通用视频标签选择器
+
+            // 无视频元素则直接返回
+            if (!videoElement) {
+                DebugLogger.debug('AutoPlay', '未找到视频播放元素');
+                return;
+            }
+
+            //获取视频当前播放时间和总时长
+            const currentTime = videoElement.currentTime; // 当前播放到的秒数
+            const duration = videoElement.duration; // 视频总时长
+
+            //过滤无效值
+            if (isNaN(duration) || duration === Infinity || duration === 0) {
+                DebugLogger.debug('AutoPlay', '视频时长未加载完成，暂不检查');
+                return;
+            }
+
+            // 计算播放进度=80%
+            const progress = currentTime / duration;
+            if (progress < this.progressThreshold) {
+                DebugLogger.debug('AutoPlay', `当前播放进度${(progress*100).toFixed(1)}%，未达到80%，不切换`);
+                return;
+            }
+            //原逻辑保留
             const videoListContainer = document.querySelector('.listCon-zrsBh');
             const activeVideo = videoListContainer?.querySelector('.item-blpma.active-EI2Hl');
-            if (!videoListContainer || !activeVideo) return;
+            if (!videoListContainer || !activeVideo) {
+                DebugLogger.debug('AutoPlay', '未找到视频列表或当前播放项');
+                return;
+            }
 
             let nextVideo = activeVideo.nextElementSibling;
             while (nextVideo) {
                 if (nextVideo.classList.contains('item-blpma') && !nextVideo.querySelector('.finished-PsNX9')) {
                     nextVideo.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
-                    DebugLogger.log('AutoPlay', '已切换下一个视频');
+                    DebugLogger.log('AutoPlay', `播放进度达到${(this.progressThreshold*100)}%，已切换下一个视频`);
                     break;
                 }
                 nextVideo = nextVideo.nextElementSibling;
+            }
+
+            if (!nextVideo) {
+                DebugLogger.debug('AutoPlay', '未找到下一个未完成的视频');
             }
         } catch (error) {
             DebugLogger.error('AutoPlay', '自动连播出错', error);
@@ -566,3 +600,4 @@ const GUI = {
         }
     });
 })();
+
