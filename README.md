@@ -5,12 +5,12 @@
 ## 简介
 
 - **名字**：EWT360 Helper
-- **最新正式版本**: 2.3.1
-- **作者**：[ZNink](https://github.com/ZNink) 和 [Lirzh](https://github.com/lirzh)
+- **测试版本**: 2.4.1
+- **作者**：[ZNink](https://github.com/ZNink) 和 [Lirzh](https://github.com/lirzh)增[L#peace](https://github.com/wesrin2000)
 - **内容概括**：自动连播、自动过认真度检查、自动跳过课程中的选择题、强制倍速
 - **要求：** 此脚本仅供学习交流，严禁用于商业用途，若有请于24小时内删除，请不要售卖脚本，此脚本完全免费！！
 - **协议**：GPL v2
-- **最后更新**：2026.2.14
+- **最后更新**：2026.2.27
 - **关于AI**：由 Kimi AI 和 豆包AI 参与编写
 
 #### 如果觉得好用，不妨给个Star，这是对我们最大的支持！
@@ -76,7 +76,7 @@
 
 我们非常感谢所有为项目做出贡献的开发者 / AI（排名不分先后）：
 
-[ZNink](https://github.com/ZNink) 和 [Lirzh](https://github.com/lirzh)
+[ZNink](https://github.com/ZNink) 和 [Lirzh](https://github.com/lirzh) 增[L#peace](https://github.com/wesrin2000)
 
 [Kimi](https://www.kimi.com) 和 [豆包AI](https://doubao.com)
 
